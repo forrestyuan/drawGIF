@@ -93,6 +93,11 @@ function handleImageUpload(event) {
   reader.readAsDataURL(file);
 }
 
+//添加帧，节流，避免在mousemove事件中过于频繁操作canvas，导致异常
+let addFunc = _.throttle(() => {
+  console.log('添加画布帧')
+  gif.addFrame(ctx, { copy: true, delay: 200 })
+}, 200)
 
 // 监听鼠标移动事件以捕获每一帧的像素数据
 canvas.addEventListener('mousedown', (event) => {
@@ -100,10 +105,6 @@ canvas.addEventListener('mousedown', (event) => {
   ctx.moveTo(event.offsetX, event.offsetY);
   isDrawing = true;
 });
-let addFunc = _.throttle(() => {
-  console.log('添加画布帧')
-  gif.addFrame(ctx, { copy: true, delay: 200 })
-}, 200)
 canvas.addEventListener('mousemove', (event) => {
   if (!isDrawing) {
     return;

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>GIF动画示例</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/gif.js/0.2.0/gif.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/gif.js/0.2.0/gif.worker.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="loading">正在生成gif动图，请稍等......</div>
+    <div class="title">
+      当前绘制模式：<span id="textDrawMode"></span>
+      <button id="changeModeBtn">【切换模式】</button>
+    </div>
+    <div class="confBox">
+      <span>
+        上传文件：
+        <input type="file" name="" id="upload-btn" />
+      </span>
+      <span>
+        画笔颜色：
+        <input type="color" id="color-selector" />
+      </span>
+      <span>
+        画笔大小：
+        <input
+          type="range"
+          id="brush-size-selector"
+          min="1"
+          max="50"
+          value="10"
+        />
+      </span>
+    </div>
+    <div id="drawList"></div>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <div class="buttonBox">
+      <button id="next-frame-btn">添加到动图中</button>
+      <button id="end-btn">生成GIF</button>
+    </div>
+    <div class="gifResLitTit">生成的GIF动图列表:</div>
+    <div id="gifResList"></div>
+    <script src="index.js"></script>
+  </body>
+</html>
